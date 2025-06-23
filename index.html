@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Majella</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      height: 100%;
+      overflow: hidden;
+    }
+    video {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+  <video id="video" playsinline controls>
+    <source src="majella.MOV" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <script>
+    // Auto play when user taps anywhere
+    document.body.addEventListener('click', function () {
+      const video = document.getElementById('video');
+      if (video.requestFullscreen) {
+        video.requestFullscreen();
+      } else if (video.webkitEnterFullscreen) { // iOS Safari
+        video.webkitEnterFullscreen();
+      }
+      video.play();
+    }, { once: true }); // samo prvi klik
+  </script>
+
+</body>
+</html>
